@@ -13,7 +13,7 @@ using BigInt = boost::multiprecision::cpp_int;
 
 const BigInt MOD = static_cast<BigInt>(1e18) + 7;
 
-// Convert string from any base to BigInt
+
 BigInt decodeValue(const string& val, int base) {
     BigInt result = 0;
     for (char digit : val) {
@@ -23,7 +23,6 @@ BigInt decodeValue(const string& val, int base) {
     return result;
 }
 
-// Modular inverse using Extended Euclidean Algorithm
 BigInt modInverse(BigInt a, BigInt m) {
     BigInt m0 = m, t, q;
     BigInt x0 = 0, x1 = 1;
@@ -45,7 +44,6 @@ BigInt modInverse(BigInt a, BigInt m) {
     return x1;
 }
 
-// Lagrange Interpolation to compute f(0)
 BigInt lagrangeInterpolation(const vector<pair<BigInt, BigInt>>& shares) {
     BigInt secret = 0;
     int k = shares.size();
@@ -105,7 +103,6 @@ int main() {
         return 1;
     }
 
-    // You can add your own logic to select combinations, here we take the first k
     vector<pair<BigInt, BigInt>> selected(points.begin(), points.begin() + k);
 
     BigInt secret = lagrangeInterpolation(selected);
